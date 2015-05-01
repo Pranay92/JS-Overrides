@@ -18,7 +18,7 @@ Array.prototype.map = function(f) {
 	}
 
 	return results;
-}
+};
 
 
 var arr = [1,2,3,4];
@@ -50,7 +50,7 @@ Array.prototype.push = function() {
 
 	// only accept one argument to be pushed irrespective of the variables passed in
 	this[this.length] = arguments[0];
-}
+};
 
 
 var arr = [];
@@ -72,7 +72,7 @@ Array.prototype.pop = function() {
 	}
 
 	this.length = (this.length - 1); 
-}
+};
 
 var arr = [1,2,3,4,5];
 
@@ -108,7 +108,7 @@ Array.prototype.splice = function(from,to) {
 
 
 	this.length = (this.length - cloneDiff);
-}
+};
 
 
 var arr = [1,2,3,4,5,6,7];
@@ -143,7 +143,7 @@ Array.prototype.slice = function(from,to) {
 	}
 
 	return result;
-}
+};
 
 
 var arr = [1,2,3,4,5];
@@ -173,7 +173,7 @@ Array.prototype.concat = function(arguments) {
 
 	index = 0;
 
-	function processArray(originalArray,elemArray) {
+	var processArray = function(originalArray,elemArray) {
 		var len = elemArray.length,
 			originalLength = originalArray.length,
 			index = 0,
@@ -212,7 +212,7 @@ Array.prototype.concat = function(arguments) {
 	}
 
 	return cloneArray;
-}
+};
 
 var arr = [2,3,4];
 var arrToConcat = [5,6,7,'something'];
