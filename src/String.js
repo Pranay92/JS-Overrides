@@ -68,3 +68,32 @@ String.prototype.split = function(cond) {
 var str =  'Pranay Dubey';
 
 console.log(str.split(' '));
+
+
+String.prototype.substr = function(from,to) {
+	
+	if(!from) {
+		return this.valueOf();
+	}
+
+	if(to) {
+		to = from + (to - 1);
+	}
+
+	if(!to) {
+		to = this.length - 1;
+	}
+
+	var arr = [];
+
+	for(var index = from; index <= to; index++) {
+		arr.push(this[index]);
+	}
+
+	return arr;
+};
+
+
+var str = 'Pranay Dubey';
+
+console.log(str.substr(4,3))
