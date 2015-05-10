@@ -96,4 +96,46 @@ String.prototype.substr = function(from,to) {
 
 var str = 'Pranay Dubey';
 
-console.log(str.substr(4,3))
+console.log(str.substr(4,3));
+
+
+String.prototype.indexOf = function(val) {
+
+	var index = 0,
+		len = this.length,
+		indexFound = -1;
+
+	while(index < len) {
+		if(this[index] == val) {
+			indexFound = index;
+			break;
+		}
+		index++;
+	}
+
+	return indexFound;
+};
+
+
+var str = "Pranay Dubey";
+
+console.log(str.indexOf("a"));
+
+String.prototype.lastIndexOf = function(val) {
+
+	var len = this.length,
+		indexFound = -1;
+
+	while(len--) {
+		if(this[len] == val) {
+			indexFound = len;
+			break;
+		}
+	}
+
+	return indexFound;
+};
+
+var str = "Pranay Dubey";
+
+console.log(str.lastIndexOf("y"));
