@@ -4,6 +4,9 @@
 	3. substr
 	4. indexOf
 	5. lastIndexOf
+	6. anchor
+	7. concat
+	8. match
 
 */
 
@@ -139,3 +142,53 @@ String.prototype.lastIndexOf = function(val) {
 var str = "Pranay Dubey";
 
 console.log(str.lastIndexOf("y"));
+
+String.prototype.anchor = function(name) {
+	var value = this.valueOf() || '',
+		elemName = name || undefined;
+
+	return '<a name="' + elemName + '">' + value + '</a>';
+};
+
+var str = "Pranay Dubey";
+
+console.log(str.anchor('something'));
+
+String.prototype.concat = function(str) {
+	str = str || '';
+	return this.valueOf() + str;
+};
+
+var str = "Pranay";
+
+console.log(str.concat(' Dubey'));
+
+
+String.prototype.match = function(val) {
+	
+	if(typeof val == 'object' && val.constructor == RegExp) {
+		return val.exec(this.valueOf());
+	}
+
+	var arr = null,
+		index = 0,
+		len = this.length;
+
+	while(index < len) {
+		if(this[index] == val) {
+			arr = [val];
+			arr["index"] = index;
+			arr["input"] = this.valueOf();
+			break;
+ 		}
+ 		index++;
+	} 
+
+	return arr;
+};
+
+var str = "Pranay Dubey";
+
+console.log(str.match('a'));
+
+console.log(str.match(/a/));
