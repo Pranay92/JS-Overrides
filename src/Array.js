@@ -152,6 +152,42 @@ var slicedArray = arr.slice(1,3);
 
 console.log(slicedArray);
 
+/*************** Overriding Array.every() ********************/
+
+Array.prototype.every = function(fn) {
+
+	if(!fn || typeof(fn) !== 'function') {
+		throw new Error('arguments passed in .every() must be function');
+		return;
+	}
+
+	var valid = true,
+			len = this.length;
+
+	while(len--) {
+		valid = fn.call({},this[len]);
+		if(!valid) {
+			break;
+		}
+	}
+
+	return valid;
+};
+
+var arr = [1,2,3,4,5];
+
+var isValid = arr.every(function(a){
+	return a < 10;
+});
+
+console.log('All elements are lesser than 10?',isValid);
+
+isValid = arr.every(function(a){
+	return (a % 2 == 0);
+});
+
+console.log('All elements are even?',isValid);
+
 /*************** Overriding Array.concat() ********************/
 
 Array.prototype.concat = function(arguments) {
