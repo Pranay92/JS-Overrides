@@ -64,7 +64,6 @@ console.log(arr);
 
 /*************** Overriding Array.pop() ********************/
 
-
 Array.prototype.pop = function() {
 	
 	if(!this.length) {
@@ -120,7 +119,6 @@ arr.splice(1,3);
 console.log(arr);
 
 /*************** Overriding Array.slice() ********************/
-
 
 Array.prototype.slice = function(from,to) {
 
@@ -187,6 +185,42 @@ isValid = arr.every(function(a){
 });
 
 console.log('All elements are even?',isValid);
+
+/*************** Overriding Array.some() ********************/
+
+Array.prototype.some = function(fn) {
+
+	if(!fn || typeof(fn) !== 'function') {
+		throw new Error('arguments passed in .some() must be function');
+		return;
+	}
+
+	var valid = false,
+			len = this.length;
+
+	while(len--) {
+		valid = fn.call({},this[len]);
+		if(valid) {
+			break;
+		}
+	}
+
+	return valid;
+};
+
+var arr = [1,2,3,4,5];
+
+var isValid = arr.some(function(a){
+	return a < 10;
+});
+
+console.log('Some elements are lesser than 10?',isValid);
+
+isValid = arr.some(function(a){
+	return (a % 2 == 0);
+});
+
+console.log('Some elements are even?',isValid);
 
 /*************** Overriding Array.concat() ********************/
 
